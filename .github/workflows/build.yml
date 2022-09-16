@@ -1,0 +1,24 @@
+name: Build
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update -y
+          sudo apt-get upgrade -y
+          sudo apt-get install musl-tools -y
+      - name: Install Nix
+        uses: cachix/install-nix-action@v15
+      - name: Build Flux
+        run: |
+          cd flux-desktop
+          nix develop .
+          cargo build --target x86_64-unknown-linux-gnu --release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          path: ../
