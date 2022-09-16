@@ -3,6 +3,7 @@
 members = [
     "flux",
     "flux-desktop",
+    "flux-linux",
     "flux-wasm"
 ]
 

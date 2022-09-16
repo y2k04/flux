@@ -165,6 +165,30 @@
                 QuartzCore
               ]);
           };
+
+          flux-linux = craneLib.buildPackage {
+              src = ./.;
+              release = true;
+              cargoExtraArgs = "-p flux-linux"
+              doCheck = true;
+
+              nativeBuildInputs = [ pkgs.makeWrapper ];
+
+              buildInputs = with pkgs; [
+                  libGL
+                  libxkbcommon
+                  xorg.libX11
+                  xorg.libXcursor
+                  xorg.libXrandr
+                  xorg.libXi
+                  xorg.libxcb
+              ];
+
+              postInstall = ''
+                wrapProgram $out/bin/flux-linux \
+                  --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath runtimeLibraries}
+              '';
+          };
         };
       } (lib.optionalAttrs stdenv.isLinux (let
         crossPkgs = import nixpkgs {

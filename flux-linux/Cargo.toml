@@ -1,0 +1,17 @@
+[package]
+name = "flux-linux"
+version = "4.4.0"
+description = "An open-source tribute to the macOS Drift screensaver"
+authors = ["Sander Melnikov <hey@sandydoo.me"]
+repository = "https://github.com/sandydoo/flux/"
+license = "MIT"
+publish = false
+edition = "2022"
+
+[dependencies]
+env_logger = "0.9"
+flux = { version = "4", path = "../flux" }
+glow = "0.11.2"
+glutin = "0.28"
+serde_json = "1"
+takeable-option = "0.5"
