@@ -183,11 +183,6 @@
                   xorg.libXi
                   xorg.libxcb
               ];
-              
-              postInstall = ''
-                wrapProgram $out/bin/flux-linux \
-                  --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath buildInputs}
-              '';
           };
         };
       } (lib.optionalAttrs stdenv.isLinux (let
