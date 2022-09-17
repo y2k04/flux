@@ -6,7 +6,7 @@ authors = ["Sander Melnikov <hey@sandydoo.me"]
 repository = "https://github.com/sandydoo/flux/"
 license = "MIT"
 publish = false
-edition = "2022"
+edition = "2021"
 
 [dependencies]
 env_logger = "0.9"
