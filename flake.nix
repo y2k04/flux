@@ -169,7 +169,7 @@
           flux-linux = craneLib.buildPackage {
               src = ./.;
               release = true;
-              cargoExtraArgs = "-p flux-linux"
+              cargoExtraArgs = "-p flux-linux";
               doCheck = true;
 
               nativeBuildInputs = [ pkgs.makeWrapper ];
