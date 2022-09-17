@@ -184,17 +184,9 @@
                   xorg.libxcb
               ];
               
-              runtimeLibraries = with pkgs;
-              [ xorg.libX11
-                xorg.libXcursor
-                xorg.libXrandr
-                xorg.libXi
-                libGL
-              ];
-
               postInstall = ''
                 wrapProgram $out/bin/flux-linux \
-                  --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath runtimeLibraries}
+                  --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath buildInputs}
               '';
           };
         };
